@@ -1,4 +1,4 @@
-<div><br><img width="40%" src="Vectr2.svg?sanitize=true"></div>
+<div><img width="50%" src="Vectr2.svg?sanitize=true"></div>
 
 Very simple and far from perfect 2D vector lua library.
 

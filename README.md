@@ -1,97 +1,103 @@
-<div><img width="50%" src="Vectr2.svg?sanitize=true"></div>
+<div><img width="60%" src="Vectr2.svg?sanitize=true"></div>
 
 Very simple and far from perfect 2D vector lua library.
+
+### Coordinate system
+```
+       Y
+      -1
+       │
+ -1 ── 0 ── 1 X
+       │
+       1
+```
 
 ## Usage
 ```lua
 local Vectr2 = require('vectr2')
 ```
 
-## Vectr2 functions
-```lua
-Vectr2.zero              --> Vectr2(0, 0)
-Vectr2.one               --> Vectr2(1, 1)
-Vectr2.up                --> Vectr2(0, -1)
-Vectr2.down              --> Vectr2(0, 1)
-Vectr2.left              --> Vectr2(-1, 0)
-Vectr2.right             --> Vectr2(1, 0)
-Vectr2.isVectr2(t)       --> true if t is table and has vectr2 __type
-Vectr2.isVectr2ByMeta(t) --> true if t's metatable is same as Vectr2's metatable
-Vectr2._meta             --> Vectr2 Metatable if needed
-```
-
-## New
+## Creation
 ```lua
 Vectr2(x, y) --> Vectr2(x, y)
 Vectr2(x, _) --> Vectr2(x, x)
 Vectr2(_, _) --> Vectr2(0, 0)
+Vectr2.ZERO  --> Vectr2(0, 0)
+Vectr2.ONE   --> Vectr2(1, 1)
+Vectr2.UP    --> Vectr2(0, -1)
+Vectr2.DOWN  --> Vectr2(0, 1)
+Vectr2.LEFT  --> Vectr2(-1, 0)
+Vectr2.RIGHT --> Vectr2(1, 0)
 ```
 
-## Adding
+## Summation
 ```lua
 vec1 + vec2 --> Vectr2(vec1.x + vec2.x, vec1.y + vec2.y)
 vec1 + x    --> Vectr2(vec1.x + x, vec1.y + x)
 x + vec1    --> Vectr2(x + vec1.x, x + vec1.y)
 ```
 
-## Subbing
+## Subtraction
 ```lua
 vec1 - vec2 --> Vectr2(vec1.x - vec2.x, vec1.y - vec2.y)
 vec1 - x    --> Vectr2(vec1.x - x, vec1.y - x)
 x - vec1    --> Vectr2(x - vec1.x, x - vec1.y)
 ```
 
-## Multiplying
+## Multiplication
 ```lua
 vec1 * vec2 --> Vectr2(vec1.x * vec2.x, vec1.y * vec2.y)
 vec1 * x    --> Vectr2(vec1.x * x, vec1.y * x)
 x * vec1    --> Vectr2(x * vec1.x, x * vec1.y)
 ```
 
-## Dividing
+## Division
 ```lua
 vec1 / vec2 --> Vectr2(vec1.x / vec2.x, vec1.y / vec2.y)
 vec1 / x    --> Vectr2(vec1.x / x, vec1.y / x)
 x / vec1    --> Vectr2(x / vec1.x, x / vec1.y)
 ```
 
-## Power of
+## Exponentiation
 ```lua
 vec1 ^ vec2 --> Vectr2(vec1.x ^ vec2.x, vec1.y ^ vec2.y)
 vec1 ^ x    --> Vectr2(vec1.x ^ x, vec1.y ^ x)
 x ^ vec1    --> Vectr2(x ^ vec1.x, x ^ vec1.y)
 ```
 
-## Module of
+## Remainder of the division
 ```lua
 vec1 % vec2 --> Vectr2(vec1.x % vec2.x, vec1.y % vec2.y)
 vec1 % x    --> Vectr2(vec1.x % x, vec1.y % x)
 x % vec1    --> Vectr2(x % vec1.x, x % vec1.y)
 ```
 
-## Comparing vectors
+## Comparison
 ```lua
 vec1 < vec2  --> vec1.x < vec2.x and vec1.y < vec2.y
 vec1 <= vec2 --> vec1.x <= vec2.x and vec1.y <= vec2.y
 vec1 == vec2 --> vec1.x == vec2.x and vec1.y == vec2.y
 ```
 
-## Convert to string
+## String
 ```lua
 tostring(vec1) --> '[x: vec1.x, y: vec1.y]'
 text .. vec1   --> 'text [x: vec1.x, y: vec1.y]'
 ```
 
-## Other operations
+## Other
 ```lua
--vec1 --> negative vec1
-#vec1 --> length of vec1 (lua 5.2+ I guess)
+-vec1                    --> negative vec1
+#vec1                    --> length of vec1 (lua 5.2+ I guess)
+Vectr2.isVectr2(t)       --> true if t is table and has vectr2 __type
+Vectr2.isVectr2ByMeta(t) --> true if t's metatable is same as Vectr2's metatable
+Vectr2._meta             --> Vectr2 Metatable if needed
 ```
 
-## Functions
+## Methods
 ```lua
 vec1:copy()        --> copy of vec1
-vec1:set(x, y)     --> sets x and y of vec1 (nil values will be ignored and not sat)
+vec1:set(x, y)     --> sets x and y of vec1 (nil values will be ignored and not set)
 vec1:unpack()      --> vec1.x and vec1.y
 vec1:floor()       --> floors vec1
 vec1:ceil()        --> ceils vec1

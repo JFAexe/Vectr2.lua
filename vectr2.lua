@@ -2,7 +2,7 @@
 -- Name:        Vectr2.lua
 -- Description: Very simple Lua 2D vector library
 -- Author:      Alexandr 'JFAexe' Konichenko
--- Version:     2021.4.17.6
+-- Version:     2021.4.18.7
 -------------------------------------------------------------------------------
 
 local setmetatable, getmetatable, assert, type, math = setmetatable, getmetatable, assert, type, math
@@ -39,7 +39,7 @@ local function zeroAssert( a )
 end
 
 function Vectr2.isVectr2( t )
-    return isTable( t ) and t['__type'] == Vectr2._type
+    return isTable( t ) and t[ '__type' ] == Vectr2._type
 end
 
 function Vectr2.isVectr2ByMeta( t )
@@ -54,10 +54,10 @@ function Vectr2Meta:__call( x, y )
 
     local _vec = { x = x or 0, y = y or x }
 
-    _vec[1] = _vec.x
-    _vec[2] = _vec.y
+    _vec[ 1 ] = _vec.x
+    _vec[ 2 ] = _vec.y
 
-    _vec['__type'] = Vectr2._type
+    _vec[ '__type' ] = Vectr2._type
 
     return setmetatable( _vec, Vectr2Meta )
 end
